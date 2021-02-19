@@ -97,7 +97,7 @@
     </build>
     <distributionManagement>
         <repository>
-            <id>lwj-mvn-repo</id>
+            <id>allenlogo</id>
             <url>file:${basedir}/repo</url>
         </repository>
     </distributionManagement>
