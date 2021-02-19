@@ -41,9 +41,9 @@ public class BaseController {
         log.error("handleException exception [{}]", ex.getMessage());
         if (ex instanceof BusinessException) {
             BusinessException exception = (BusinessException)ex;
-            return MessageResponse.of(exception.getCode(), exception.getMessage(), "");
+            return MessageResponse.of(exception.getCode(), exception.getMessage(), EMPTY_STRING);
         } else if (ex instanceof IllegalArgumentException) {
-            return MessageResponse.of(ExceptionTypeEnum.CODE_ERROR_PARAM.getCode(), ex.getMessage(), "");
+            return MessageResponse.of(ExceptionTypeEnum.CODE_ERROR_PARAM.getCode(), ex.getMessage(), EMPTY_STRING);
         } else if (ex instanceof MethodArgumentNotValidException) {
             MethodArgumentNotValidException methodArgumentNotValidException = (MethodArgumentNotValidException)ex;
             return this.handleBindingResult(methodArgumentNotValidException.getBindingResult());
@@ -51,7 +51,7 @@ public class BaseController {
             BindException bindException = (BindException)ex;
             return this.handleBindingResult(bindException);
         } else {
-            return MessageResponse.of(ExceptionTypeEnum.CODE_SYSTEM_ERROR, "");
+            return MessageResponse.of(ExceptionTypeEnum.CODE_SYSTEM_ERROR, EMPTY_STRING);
         }
     }
 
@@ -69,7 +69,7 @@ public class BaseController {
                 sb.append(SEPARATOR_EQUAL_JOINER).append(rejectedValue);
             }
         }
-        return MessageResponse.of(ExceptionTypeEnum.CODE_ERROR_PARAM.getCode(), sb.toString(), "");
+        return MessageResponse.of(ExceptionTypeEnum.CODE_ERROR_PARAM.getCode(), sb.toString(), EMPTY_STRING);
     }
 
 }
