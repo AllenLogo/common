@@ -95,4 +95,10 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>lwj-mvn-repo</id>
+            <url>file:${basedir}/repo</url>
+        </repository>
+    </distributionManagement>
 </project>
